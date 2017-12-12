@@ -143,4 +143,11 @@ public class RoleDto implements Serializable {
 		this.users = users;
 	}
 
+	@Override
+	public String toString() {
+		return "RoleDto [roleid=" + roleid + ", creater=" + creater + ", createtime=" + createtime + ", roledesc="
+				+ roledesc + ", rolename=" + rolename + ", status=" + status + ", updatater=" + updatater
+				+ ", updatetime=" + updatetime + "]";
+	}
+
 }

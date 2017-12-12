@@ -1,14 +1,11 @@
 package cn.com.taiji.module.service;
 
-import java.beans.Beans;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -204,10 +201,10 @@ public class UserService {
 		} else {
 			pageContent = userRepository.findAll(pageable);
 		}
- 		System.out.println("PageContent :"+pageContent);
+// 		System.out.println("PageContent :"+pageContent);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("total", pageContent.getTotalElements());
-		map.put("users", accountPage2Dto(pageContent));
+		map.put("rows", accountPage2Dto(pageContent));
 		return map;
 	}
 
@@ -224,7 +221,8 @@ public class UserService {
 		List<User> userList = pageContent.getContent();
 		List<UserDto> userDtoList = new ArrayList<UserDto>();
 		for (User user : userList) {
-			userToUserDto(user);
+			
+			userDtoList.add(userToUserDto(user));
 		}
 		return userDtoList;
 	}

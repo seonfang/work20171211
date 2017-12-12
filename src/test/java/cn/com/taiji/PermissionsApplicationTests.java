@@ -35,17 +35,20 @@ public class PermissionsApplicationTests {
 //		System.out.println(userRepository.findAll());//成功
 //		userService.deleteUser("123456789");//成功
 //		userService.deleteUserByUserid(1);//成功
+		for(int i = 500; i<550;i++) {
+			User u = userRepository.findOne("123456789");
+			UserDto userDto = new UserDto();
+			 BeanUtils.copyProperties(u, userDto);
+			 userDto.setUserid(i);
+			 userDto.setUsername("小"+i);
+			userDto.setId(UUID.randomUUID().toString().replaceAll("-", ""));//"84d27a9964c14372894547a5acc273a6");
+			userDto.setStatus(1);
+			userService.addUser(userDto);
+			System.out.println("成功 "+i);
+		}
 		
-//		User u = userRepository.findOne("123456789");
-//		UserDto userDto = new UserDto();
-//		 BeanUtils.copyProperties(u, userDto);
-//		 userDto.setId("00000122");
-//		 userDto.setUserid(200);
-//		userDto.setId(/*UUID.randomUUID().toString().replaceAll("-", "")*/"84d27a9964c14372894547a5acc273a6");
-//		userDto.setStatus(1);
-//		userService.addUser(userDto);
-//		System.out.println("Page: "+userService.getPage(1, 2,new HashMap<>(), new HashMap<>()));
-		System.out.println("FindAll : "+userRepository.findAll());
+/// 		System.out.println("Page: "+userService.getPage(1, 2,new HashMap<>(), new HashMap<>()));
+//		System.out.println("FindAll : "+userRepository.findAll());
 	}
 	
 	@Autowired
@@ -63,7 +66,9 @@ public class PermissionsApplicationTests {
 		
 //		roleService.deleteRole(123);
 //		System.out.println(roleService.findAllRole());
-		System.out.println(roleService.findRole(123));
+//		System.out.println(roleService.findRole(123));
+ 		System.out.println("Page: "+userService.getPage(1, 2,new HashMap<>(), new HashMap<>()));
+//		System.out.println("Page: "+roleService.getPage(1, 2,new HashMap<>(), null));
 	}
 
 }
